@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "532948392509",
+    "firebase_url": "https://imoim-fdd76.firebaseio.com",
+    "project_id": "imoim-fdd76",
+    "storage_bucket": "imoim-fdd76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532948392509:android:9224be1fef6f83d010e854",
+        "android_client_info": {
+          "package_name": "kr.co.ajsoft.imoim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532948392509-iib1dlin33tn7oarh0gjgam6rk7ul57f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kr.co.ajsoft.imoim",
+            "certificate_hash": "9d3b4a71d33b65c661c2781450e4e09ec2bc768f"
+          }
+        },
+        {
+          "client_id": "532948392509-2kqt137oa4n6ichaplup5e888sr6glf1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6-luo4LbQ76JdrGL-3doS3ShdQ17nsDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532948392509-2kqt137oa4n6ichaplup5e888sr6glf1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
