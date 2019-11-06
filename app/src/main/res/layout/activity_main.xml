@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/bottom_navi"
-            app:itemIconTint="@color/colorAccent"
+            app:itemIconTint="@color/navi_select"
             app:labelVisibilityMode="unlabeled"
             android:background="?android:attr/windowBackground"
             app:menu="@menu/bottom_navi"/>
