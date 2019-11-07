@@ -8,13 +8,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-import kr.co.ajsoft.imoim.MainFragment.GroupFragment;
 import kr.co.ajsoft.imoim.MainFragment.HomeFragment;
 import kr.co.ajsoft.imoim.MainFragment.NotificationFragment;
 import kr.co.ajsoft.imoim.MainFragment.ProfileFragment;
@@ -32,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView=findViewById(R.id.bottom_navi);
         navigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
 
