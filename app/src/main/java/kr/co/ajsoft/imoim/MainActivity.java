@@ -51,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
                             break;
 
-                        case R.id.navi_group :
+                        case R.id.navi_add :
                             fragment=null;
-                            startActivity(new Intent(MainActivity.this,GroupActivity.class));
+                            startActivity(new Intent(MainActivity.this, PostActivity.class));
 
                             break;
 

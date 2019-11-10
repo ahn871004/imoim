@@ -14,8 +14,8 @@
         android:title=""
         />
     <item
-        android:id="@+id/navi_group"
-        android:icon="@drawable/ic_action_group"
+        android:id="@+id/navi_add"
+        android:icon="@drawable/ic_action_add"
         android:title=""
         />
     <item
