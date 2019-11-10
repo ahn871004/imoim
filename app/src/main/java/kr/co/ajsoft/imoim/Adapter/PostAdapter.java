@@ -1,6 +1,7 @@
 package kr.co.ajsoft.imoim.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
+import kr.co.ajsoft.imoim.CommentsActivity;
 import kr.co.ajsoft.imoim.Model.Post;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.R;
@@ -66,6 +68,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
         publisherInfo(viewHolder.imagProfile,viewHolder.userName,viewHolder.publisher,post.getPublisher());
         isLiked(post.getPostid(),viewHolder.like);
         numLikes(viewHolder.likes,post.getPostid());
+        getComments(post.getPostid(),viewHolder.comments);
+        isSaved(post.getPostid(),viewHolder.save);
+
+        viewHolder.save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewHolder.save.getTag().equals("save")){
+                    FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid())
+                            .child(post.getPostid()).setValue(true);
+
+                }else{
+                    FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid())
+                            .child(post.getPostid()).removeValue();
+
+                }
+            }
+        });
 
         viewHolder.like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +98,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
                             .child(firebaseUser.getUid()).removeValue();
 
                 }
+            }
+        });
+
+        viewHolder.comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, CommentsActivity.class);
+                intent.putExtra("postid",post.getPostid());
+                intent.putExtra("publisherid",post.getPublisher());
+                mContext.startActivity(intent);
+            }
+        });
+
+        viewHolder.comments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, CommentsActivity.class);
+                intent.putExtra("postid",post.getPostid());
+                intent.putExtra("publisherid",post.getPublisher());
+                mContext.startActivity(intent);
             }
         });
 
@@ -110,8 +149,27 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
             comments=itemView.findViewById(R.id.comments);
 
 
+
         }
     }
+
+    private void getComments(String postid, final TextView comments){
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Comments").child(postid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                comments.setText("View All"+dataSnapshot.getChildrenCount()+"Comments");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
     private void isLiked(String postid, final ImageView imageView){
 
         final FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
@@ -175,6 +233,34 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
 
             }
         });
+    }
+
+    private void isSaved(final String postid, final ImageView imageView){
+        FirebaseUser firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Saves")
+                .child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(postid).exists()){
+                    imageView.setImageResource(R.drawable.ic_save_black);
+                    imageView.setTag("saved");
+
+                }else {
+                    imageView.setImageResource(R.drawable.ic_save_black);
+                    imageView.setTag("save");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
 }

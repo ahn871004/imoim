@@ -60,6 +60,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
         holder.btnFollow.setVisibility(View.VISIBLE);
 
         holder.username.setText(user.getUserName());
+        holder.fullname.setText(user.getFullname());
 
         Glide.with(mContext).load(user.getImageurl()).into(holder.imageProfile);
         isFollowing(user.getId(),holder.btnFollow);
@@ -87,14 +88,14 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
                 if(holder.btnFollow.getText().toString().equals("follow")){
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(user.getId()).setValue(true);
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
                             .child("followers").child(firebaseUser.getUid()).setValue(true);
 
 
                 }else {
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                             .child("following").child(user.getId()).removeValue();
-                    FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
+                    FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
                             .child("followers").child(firebaseUser.getUid()).removeValue();
 
                 }
@@ -111,6 +112,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
     public class VH extends RecyclerView.ViewHolder {
 
         public TextView username;
+        public TextView fullname;
         public CircleImageView imageProfile;
         public Button btnFollow;
 
@@ -119,6 +121,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
             super(itemView);
 
             username=itemView.findViewById(R.id.userName);
+            fullname=itemView.findViewById(R.id.fullname);
             imageProfile=itemView.findViewById(R.id.image_profile);
             btnFollow=itemView.findViewById(R.id.btn_follow);
 

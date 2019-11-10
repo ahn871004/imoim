@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText userName,email,password;
+    EditText userName,fullname,email,password;
     TextView textLogin;
 
     FirebaseAuth auth;
@@ -37,6 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         userName=findViewById(R.id.et_username);
+        fullname=findViewById(R.id.et_fullname);
         email=findViewById(R.id.et_email);
         password=findViewById(R.id.et_password);
         textLogin=findViewById(R.id.tv_login);
@@ -61,23 +62,24 @@ public class RegisterActivity extends AppCompatActivity {
         pd.show();
         
         String strUsername=userName.getText().toString();
+        String strFullname=fullname.getText().toString();
         String strEmail=email.getText().toString();
         String strPassword=password.getText().toString();
         
-        if(TextUtils.isEmpty(strUsername) || TextUtils.isEmpty(strEmail) || TextUtils.isEmpty(strPassword)){
+        if(TextUtils.isEmpty(strUsername) ||TextUtils.isEmpty(strFullname)|| TextUtils.isEmpty(strEmail) || TextUtils.isEmpty(strPassword)){
             Toast.makeText(this, "모든 빈칸의 항목을 기입해 주세요.", Toast.LENGTH_SHORT).show();
             
         }else if(strPassword.length()<6){
             Toast.makeText(this, "비밀번호는 6자리 이상입니다.", Toast.LENGTH_SHORT).show();
 
         }else{
-            register(strUsername,strEmail,strPassword);
+            register(strUsername,strFullname,strEmail,strPassword);
 
         }
         
     }
 
-    private void register(final String userName, String email, String password){
+    private void register(final String userName, final String fullname, String email, String password){
         auth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -91,6 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                             HashMap<String,Object> hashMap=new HashMap<>();
                             hashMap.put("id",userid);
                             hashMap.put("username", userName.toLowerCase());
+                            hashMap.put("fullname",fullname);
                             hashMap.put("bio","");
                             hashMap.put("imageurl","https://firebasestorage.googleapis.com/v0/b/imoim-fdd76.appspot.com/o/seoul.png?alt=media&token=a233be5d-7188-44e6-8ec4-8190ce944e66");
 
