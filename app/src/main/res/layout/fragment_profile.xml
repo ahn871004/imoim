@@ -5,12 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment.ProfileFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        android:id="@+id/bar"
-        >
+
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -45,11 +40,11 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-    </com.google.android.material.appbar.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bar">
+        android:layout_below="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,13 +87,14 @@
                                 android:id="@+id/posts"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:layout_gravity="center"
+                                android:text="0"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="posts"/>
+                                android:text="게시물"/>
 
 
                         </LinearLayout>
@@ -116,12 +112,13 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:layout_gravity="center"
                                 android:textSize="18sp"
+                                android:text="0"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="followers"/>
+                                android:text="팔로워"/>
 
 
                         </LinearLayout>
@@ -138,26 +135,19 @@
                                 android:textColor="@color/colorPrimaryDark"
                                 android:layout_gravity="center"
                                 android:textSize="18sp"
+                                android:text="0"
                                 android:textStyle="bold"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="following"/>
+                                android:text="팔로잉"/>
 
 
                         </LinearLayout>
 
 
                     </LinearLayout>
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:id="@+id/edit_profile"
-                        android:background="@drawable/button_black"/>
-
 
 
                 </LinearLayout>
@@ -187,6 +177,12 @@
                     android:maxLines="5"
                     android:textColor="@color/colorPrimaryDark"/>
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/edit_profile"
+                    android:background="@drawable/button_black"/>
 
 
             </LinearLayout>

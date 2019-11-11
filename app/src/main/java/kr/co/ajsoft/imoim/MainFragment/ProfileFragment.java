@@ -108,7 +108,7 @@ public class ProfileFragment extends Fragment {
         mysaves();
 
         if(profileid.equals(firebaseUser.getUid())){
-            editProfile.setText("Edit Profile");
+            editProfile.setText("프로필 수정");
 
         }else {
             checkFollow();
@@ -257,6 +257,7 @@ public class ProfileFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                 int i=0;
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Post post=snapshot.getValue(Post.class);
@@ -267,7 +268,9 @@ public class ProfileFragment extends Fragment {
 
                 }
 
+
                 posts.setText(""+i);
+
             }
 
             @Override

@@ -6,28 +6,33 @@
         android:id="@+id/navi_home"
         android:icon="@drawable/ic_action_home"
         android:title=""
+        app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/navi_search"
         android:icon="@drawable/ic_action_search"
         android:title=""
+        app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/navi_add"
-        android:icon="@drawable/ic_action_add"
+        android:id="@+id/navi_group"
+        android:icon="@drawable/ic_action_group"
         android:title=""
+        app:showAsAction="ifRoom"
         />
     <item
         android:id="@+id/navi_noti"
         android:icon="@drawable/ic_action_noti"
         android:title=""
+        app:showAsAction="ifRoom"
         />
 
     <item
         android:id="@+id/navi_person"
         android:icon="@drawable/ic_action_person"
         android:title=""
+        app:showAsAction="ifRoom"
         />
 
 

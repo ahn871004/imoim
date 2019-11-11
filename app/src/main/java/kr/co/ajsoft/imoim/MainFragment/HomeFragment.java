@@ -1,6 +1,7 @@
 package kr.co.ajsoft.imoim.MainFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +27,7 @@ import java.util.List;
 
 import kr.co.ajsoft.imoim.Adapter.PostAdapter;
 import kr.co.ajsoft.imoim.Model.Post;
+import kr.co.ajsoft.imoim.PostActivity;
 import kr.co.ajsoft.imoim.R;
 
 
@@ -36,12 +39,25 @@ public class HomeFragment extends Fragment {
 
     private List<String> followingList;
 
+    FloatingActionButton floatingActionButton;
+
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
+
         View view=inflater.inflate(R.layout.fragment_home, container, false);
+
+        floatingActionButton=view.findViewById(R.id.floating_action_button);
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), PostActivity.class));
+            }
+        });
 
         recyclerView=view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -57,6 +73,8 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+
 
     private void checkFollowing(){
         followingList=new ArrayList<>();
@@ -107,6 +125,8 @@ public class HomeFragment extends Fragment {
         });
 
     }
+
+
 
 
 }

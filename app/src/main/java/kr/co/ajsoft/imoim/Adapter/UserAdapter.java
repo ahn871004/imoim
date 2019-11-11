@@ -120,7 +120,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
         public VH(@NonNull View itemView) {
             super(itemView);
 
-            username=itemView.findViewById(R.id.userName);
+            username=itemView.findViewById(R.id.username);
             fullname=itemView.findViewById(R.id.fullname);
             imageProfile=itemView.findViewById(R.id.image_profile);
             btnFollow=itemView.findViewById(R.id.btn_follow);
