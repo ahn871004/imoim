@@ -3,14 +3,14 @@ package kr.co.ajsoft.imoim.Model;
 public class User {
 
     private String id;
-    private String userName;
+    private String username;
     private String fullname;
     private String imageurl;
     private String bio;
 
-    public User(String id, String userName, String fullname, String imageurl, String bio) {
+    public User(String id, String username, String fullname, String imageurl, String bio) {
         this.id = id;
-        this.userName = userName;
+        this.username = username;
         this.fullname = fullname;
         this.imageurl = imageurl;
         this.bio = bio;
@@ -27,12 +27,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFullname() {
