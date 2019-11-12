@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -32,11 +33,11 @@ import kr.co.ajsoft.imoim.R;
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.VH> {
 
     private Context mContext;
-    private List<User> mUsers;
+    private ArrayList<User> mUsers;
 
     private FirebaseUser firebaseUser;
 
-    public UserAdapter(Context mContext, List<User> mUsers) {
+    public UserAdapter(Context mContext, ArrayList<User> mUsers) {
         this.mContext = mContext;
         this.mUsers = mUsers;
     }

@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.ajsoft.imoim.CommentsActivity;
@@ -30,11 +31,11 @@ import kr.co.ajsoft.imoim.R;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
 
     public Context mContext;
-    public List<Post> mPost;
+    public ArrayList<Post> mPost;
 
     private FirebaseUser firebaseUser;
 
-    public PostAdapter(Context mContext, List<Post> mPost) {
+    public PostAdapter(Context mContext, ArrayList<Post> mPost) {
         this.mContext = mContext;
         this.mPost = mPost;
     }

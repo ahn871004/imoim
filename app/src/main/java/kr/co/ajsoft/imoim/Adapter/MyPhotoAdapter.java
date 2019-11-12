@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.ajsoft.imoim.Model.Post;
@@ -19,9 +20,9 @@ import kr.co.ajsoft.imoim.R;
 public class MyPhotoAdapter extends RecyclerView.Adapter<MyPhotoAdapter.VH>{
 
     private Context context;
-    private List<Post> mPost;
+    private ArrayList<Post> mPost;
 
-    public MyPhotoAdapter(Context context, List<Post> mPost) {
+    public MyPhotoAdapter(Context context, ArrayList<Post> mPost) {
         this.context = context;
         this.mPost = mPost;
     }
