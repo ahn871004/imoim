@@ -2,6 +2,7 @@ package kr.co.ajsoft.imoim;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -30,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
     FirebaseAuth auth;
     DatabaseReference reference;
     ProgressDialog pd;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +61,11 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public void clickRegister2(View view) {
-        pd=new ProgressDialog(RegisterActivity.this);
-        pd.setMessage("기다려주세요..");
-        pd.show();
+
+
+//        pd=new ProgressDialog(RegisterActivity.this);
+//        pd.setMessage("기다려주세요..");
+//        pd.show();
         
         String strUsername=userName.getText().toString();
         String strFullname=fullname.getText().toString();
@@ -101,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()){
-                                        pd.dismiss();
+                                        //pd.dismiss();
                                         Intent intent=new Intent(RegisterActivity.this,MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                         startActivity(intent);
@@ -111,7 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
                             });
 
                         }else{
-                            pd.dismiss();
+                            //pd.dismiss();
                             Toast.makeText(RegisterActivity.this, "이메일 또는 비밀번호 입력이 잘못 되었습니다.", Toast.LENGTH_SHORT).show();
                             
                         }

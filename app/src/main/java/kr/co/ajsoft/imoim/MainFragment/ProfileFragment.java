@@ -125,8 +125,10 @@ public class ProfileFragment extends Fragment {
                 if(btn.equals("Edit Profile")){
                     //editprofile로 이동
 
+
                 }else {
                     if(btn.equals("follow")){
+                        //"follow"버튼 누르면
                         FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
                                 .child("following").child(profileid).setValue(true);
                         FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
