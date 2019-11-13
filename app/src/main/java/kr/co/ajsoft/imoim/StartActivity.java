@@ -39,7 +39,10 @@ public class StartActivity extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
+        //firebase 유저 확인
+        firebaseUser=FirebaseAuth.getInstance().getCurrentUser();
 
+        //firebase에 유저가 확인되면 바로 메인으로..
         if(firebaseUser!=null){
             Intent intent=new Intent(StartActivity.this,MainActivity.class);
             startActivity(intent);

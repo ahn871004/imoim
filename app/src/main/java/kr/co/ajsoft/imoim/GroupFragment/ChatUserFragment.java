@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 import kr.co.ajsoft.imoim.Adapter.ChatUserAdapter;
+import kr.co.ajsoft.imoim.Model.ChatUser;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.R;
 
@@ -32,7 +33,7 @@ public class ChatUserFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ChatUserAdapter userAdapter;
-    private ArrayList<User> mUsers;
+    private ArrayList<ChatUser> mUsers;
 
 
     @Override
@@ -66,13 +67,14 @@ public class ChatUserFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mUsers.clear();
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
-                    User user=snapshot.getValue(User.class);
+                    ChatUser user=snapshot.getValue(ChatUser.class);
 
-                    assert user!=null;
-                    assert firebaseUser!=null;
-                    if(!user.getId().equals(firebaseUser.getUid())){
+//                    assert user!=null;
+//                    assert firebaseUser!=null;
+                    if(user.getId()!=null){
+                    if(!user.getId().equals(firebaseUser.getUid())) {
                         mUsers.add(user);
-
+                    }
 
                     }
 

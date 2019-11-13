@@ -1,6 +1,7 @@
 package kr.co.ajsoft.imoim.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +16,17 @@ import com.google.android.gms.common.ConnectionResult;
 
 import java.util.ArrayList;
 
+import kr.co.ajsoft.imoim.MessageActivity;
+import kr.co.ajsoft.imoim.Model.ChatUser;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.R;
 
 public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH>{
 
     private Context mContext;
-    private ArrayList<User> mUsers;
+    private ArrayList<ChatUser> mUsers;
 
-    public ChatUserAdapter(Context mContext, ArrayList<User> mUsers) {
+    public ChatUserAdapter(Context mContext, ArrayList<ChatUser> mUsers) {
         this.mContext = mContext;
         this.mUsers = mUsers;
     }
@@ -39,7 +42,7 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH>{
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
 
-        User user=mUsers.get(position);
+        final ChatUser user=mUsers.get(position);
         holder.username.setText(user.getUsername());
         if(user.getImageurl().equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
@@ -48,7 +51,19 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH>{
             Glide.with(mContext).load(user.getImageurl()).into(holder.profile_image);
 
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(mContext, MessageActivity.class);
+                intent.putExtra("userid",user.getId());
+                mContext.startActivity(intent);
+            }
+        });
+
     }
+
+
 
     @Override
     public int getItemCount() {
