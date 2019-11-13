@@ -36,7 +36,7 @@ public class SearchFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
-    private List<User> users;
+    private ArrayList<User> users;
 
     EditText searchBar;
 

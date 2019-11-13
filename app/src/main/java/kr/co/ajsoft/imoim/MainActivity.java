@@ -15,6 +15,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.security.acl.Group;
+
 import kr.co.ajsoft.imoim.MainFragment.GroupFragment;
 import kr.co.ajsoft.imoim.MainFragment.HomeFragment;
 import kr.co.ajsoft.imoim.MainFragment.NotificationFragment;
@@ -23,7 +25,7 @@ import kr.co.ajsoft.imoim.MainFragment.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    BottomNavigationView navigationView;
+    private BottomNavigationView navigationView;
     Fragment fragment=null;
 
 
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         navigationView=findViewById(R.id.bottom_navi);
         navigationView.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
+
 
         Bundle intent=getIntent().getExtras();
         if(intent!=null){
@@ -75,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
                             break;
 
                         case R.id.navi_group :
+
                             fragment=new GroupFragment();
                             item.setChecked(true);
 
@@ -107,11 +111,4 @@ public class MainActivity extends AppCompatActivity {
                     return false;
                 }
             };
-
-//    public void clickFloating(View view) {
-//
-//        startActivity(new Intent(MainActivity.this, PostActivity.class));
-//
-//
-//    }
 }

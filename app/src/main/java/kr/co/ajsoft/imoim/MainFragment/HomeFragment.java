@@ -35,9 +35,9 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
-    private List<Post> postLists;
+    private ArrayList<Post> postLists;
 
-    private List<String> followingList;
+    private ArrayList<String> followingList;
 
     FloatingActionButton floatingActionButton;
 

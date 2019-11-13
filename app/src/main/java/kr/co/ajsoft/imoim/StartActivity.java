@@ -40,8 +40,6 @@ public class StartActivity extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
 
-
-
         if(firebaseUser!=null){
             startActivity(new Intent(StartActivity.this,MainActivity.class));
         }
@@ -50,7 +48,6 @@ public class StartActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_start);
 
     }

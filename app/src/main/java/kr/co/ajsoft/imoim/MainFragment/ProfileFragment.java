@@ -45,15 +45,15 @@ public class ProfileFragment extends Fragment {
     TextView posts,followers,following,fullname,bio,username;
     Button editProfile;
 
-    private List<String> mySaves;
+    private ArrayList<String> mySaves;
 
     RecyclerView recyclerView_saves;
     MyPhotoAdapter myPhotoAdapter_saves;
-    List<Post> postList_saves;
+    ArrayList<Post> postList_saves;
 
     RecyclerView recyclerView;
     MyPhotoAdapter myPhotoAdapter;
-    List<Post> postList;
+    ArrayList<Post> postList;
 
     FirebaseUser firebaseUser;
     String profileid;
