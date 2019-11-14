@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "모든 빈칸의 항목을 기입해 주세요.", Toast.LENGTH_SHORT).show();
 
                 }else{
+                    //로그인 complete여부 확인하는 리스너
                     auth.signInWithEmailAndPassword(strEmail,strPassword)
                             .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override

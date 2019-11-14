@@ -12,7 +12,9 @@ import kr.co.ajsoft.imoim.GroupFragment.ChatUserFragment;
 public class TablayoutAdapter extends FragmentPagerAdapter {
 
     Fragment[] fragments=new Fragment[2];
-    String[] pageTitles=new String[]{"Chat","User"};
+    String[] pageTitles=new String[]{"Chat","Users"};
+
+
 
     public TablayoutAdapter(@NonNull FragmentManager fm) {
         super(fm);
