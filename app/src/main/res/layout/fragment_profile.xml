@@ -24,7 +24,7 @@
                     android:maxLines="1"
                     android:textStyle="bold"
                     android:id="@+id/username"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/textcolor_DarkGrey"/>
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -63,12 +63,7 @@
                     android:layout_height="80dp"
                     android:id="@+id/image_profile"
                     />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="4dp"
-                    android:orientation="vertical">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -94,6 +89,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/textcolor_DarkGrey"
                                 android:text="게시물"/>
 
 
@@ -118,6 +114,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/textcolor_DarkGrey"
                                 android:text="팔로워"/>
 
 
@@ -141,6 +138,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:textColor="@color/textcolor_DarkGrey"
                                 android:text="팔로잉"/>
 
 
@@ -149,8 +147,6 @@
 
                     </LinearLayout>
 
-
-                </LinearLayout>
 
 
             </LinearLayout>
@@ -168,21 +164,21 @@
                     android:id="@+id/fullname"
                     android:textStyle="bold"
                     android:textSize="16sp"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/textcolor_DarkGrey"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:id="@+id/bio"
                     android:maxLines="5"
-                    android:textColor="@color/colorPrimaryDark"/>
+                    android:textColor="@color/textcolor_DarkGrey"/>
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
                     android:layout_marginTop="8dp"
                     android:id="@+id/edit_profile"
-                    android:background="@drawable/button_black"/>
+                    android:background="@drawable/button_profilefragment"/>
 
 
             </LinearLayout>
@@ -193,7 +189,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_marginRight="-5dp"
                 android:id="@+id/last_bar"
-                android:background="@drawable/button_black"
+                android:background="@drawable/button_profilefragment"
                 android:orientation="horizontal">
                 
                 <ImageButton
@@ -209,7 +205,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:id="@+id/saved_photos"
-                    android:src="@drawable/ic_save"
+                    android:src="@drawable/ic_saved"
                     style="?android:attr/buttonBarButtonStyle"
                     />
                 

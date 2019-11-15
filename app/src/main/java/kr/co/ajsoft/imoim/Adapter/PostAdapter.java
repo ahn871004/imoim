@@ -245,11 +245,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.child(postid).exists()){
-                    imageView.setImageResource(R.drawable.ic_save_black);
+                    imageView.setImageResource(R.drawable.ic_savepost);
                     imageView.setTag("saved");
 
                 }else {
-                    imageView.setImageResource(R.drawable.ic_save_black);
+                    imageView.setImageResource(R.drawable.ic_savedpost);
                     imageView.setTag("save");
 
                 }

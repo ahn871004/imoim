@@ -26,7 +26,7 @@
                 android:layout_gravity="center_vertical"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="#000000"
+                android:textColor="@color/textcolor_DarkGrey"
                 android:text="username"/>
 
         </LinearLayout>
@@ -53,12 +53,12 @@
                 android:id="@+id/comment"
                 android:layout_toEndOf="@+id/like"
                 android:layout_marginStart="10dp"
-                android:src="@drawable/ic_message"/>
+                android:src="@drawable/ic_comment"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:id="@+id/save"
-                android:src="@drawable/ic_bookmark"
+                android:src="@drawable/ic_savepost"
                 android:layout_alignParentEnd="true"
                 />
 
@@ -71,7 +71,7 @@
             android:textStyle="bold"
             android:id="@+id/likes"
             android:text="10 likes"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/textcolor_DarkGrey"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
             android:textStyle="bold"
             android:id="@+id/publisher"
             android:text="username"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/textcolor_DarkGrey"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
             android:textStyle="bold"
             android:id="@+id/description"
             android:text="description"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/textcolor_DarkGrey"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -99,7 +99,7 @@
             android:layout_marginBottom="10dp"
             android:id="@+id/comments"
             android:text="View All 20 Comment"
-            android:textColor="@color/colorAccent"/>
+            android:textColor="@color/textcolor_DarkGrey"/>
 
     </LinearLayout>
 

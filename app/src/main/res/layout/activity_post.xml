@@ -67,6 +67,7 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:theme="@style/EditTextStyle"
             android:layout_marginTop="15dp"
             android:hint="문구 입력"
             android:maxLines="5"/>

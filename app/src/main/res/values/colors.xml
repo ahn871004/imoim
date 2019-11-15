@@ -5,5 +5,11 @@
     <color name="colorAccent">#BB86FC</color>
     <color name="textOnPrimary">#ffffff</color>
     <color name="secondaryTeal">#03DAC5</color>
-    <color name="colorBlack">#000000</color>
+    <color name="textcolor_Black">#000000</color>
+    <color name="textcolor_DarkGrey">#373737</color>
+    <color name="textcolor_Grey">#a4a4a4</color>
+
+    <color name="cursorColor">#BB86FC</color>
+    <color name="editLineColor">#6200ea</color>
+
 </resources>
