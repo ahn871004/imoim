@@ -8,8 +8,8 @@
     android:padding="5dp"
     tools:context=".MessageActivity">
 
-    <ListView
-        android:id="@+id/message_listview"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/message_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -45,7 +45,7 @@
             android:text="send"
             android:backgroundTint="@color/colorAccent"
             android:layout_marginLeft="1dp"
-            android:onClick="clickSend"
+            android:id="@+id/btn_send"
             />
 
     </LinearLayout>

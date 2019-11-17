@@ -1,6 +1,8 @@
 package kr.co.ajsoft.imoim.GroupFragment;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.ajsoft.imoim.MessageActivity;
+import kr.co.ajsoft.imoim.Model.Chat;
 import kr.co.ajsoft.imoim.Model.ChatUser;
 import kr.co.ajsoft.imoim.R;
 
@@ -45,20 +49,29 @@ public class ChatUserFragment extends Fragment {
 
     class ChatUserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-
         List<ChatUser> chatUserList;
 
         public ChatUserAdapter(){
             chatUserList=new ArrayList<>();
+            final String myid= FirebaseAuth.getInstance().getCurrentUser().getUid();
+
             FirebaseDatabase.getInstance().getReference().child("Users").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                    chatUserList.clear();
                     for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                        chatUserList.add(snapshot.getValue(ChatUser.class));
+
+                        ChatUser chatUser=snapshot.getValue(ChatUser.class);
+                        if(chatUser.getId().equals(myid)){
+
+                            continue;
+                        }
+                        chatUserList.add(chatUser);
                     }
-                    notifyDataSetChanged();
                     //새로고침
+                    notifyDataSetChanged();
+
                 }
 
                 @Override
@@ -78,7 +91,7 @@ public class ChatUserFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
 
             Glide.with(holder.itemView.getContext()).load(chatUserList.get(position)
                     .getImageurl()).apply(new RequestOptions().circleCrop()).into(((CustomViewHolder)holder).imageView);
@@ -89,6 +102,8 @@ public class ChatUserFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent=new Intent(getView().getContext(), MessageActivity.class);
+                    //상대 id담기
+                    intent.putExtra("destinationid",chatUserList.get(position).getId());
                     startActivity(intent);
                 }
             });

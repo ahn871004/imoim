@@ -4,10 +4,12 @@ public class Comment {
 
     private String commnet;
     private String publisher;
+    private String commentid;
 
-    public Comment(String commnet, String publisher) {
+    public Comment(String commnet, String publisher, String commentid) {
         this.commnet = commnet;
         this.publisher = publisher;
+        this.commentid = commentid;
     }
 
     public Comment() {
@@ -27,5 +29,13 @@ public class Comment {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getCommentid() {
+        return commentid;
+    }
+
+    public void setCommentid(String commentid) {
+        this.commentid = commentid;
     }
 }
