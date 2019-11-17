@@ -19,33 +19,27 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".MessageActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity
+            android:name=".MessageActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ChatActivity" />
-
         <activity
             android:name=".CommentsActivity"
             android:theme="@style/AppThemeNoActionBar" />
-
         <activity android:name=".PostActivity" />
-
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppThemeNoActionBar" />
-
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
         <activity
             android:name=".StartActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,6 +1,7 @@
 package kr.co.ajsoft.imoim.MainFragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import java.util.Collections;
 import java.util.List;
 
 import kr.co.ajsoft.imoim.Adapter.MyPhotoAdapter;
+import kr.co.ajsoft.imoim.EditProfileActivity;
 import kr.co.ajsoft.imoim.Model.Post;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.R;
@@ -122,8 +124,9 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 String btn=editProfile.getText().toString();
 
-                if(btn.equals("Edit Profile")){
+                if(btn.equals("프로필 수정")){
                     //editprofile로 이동
+                    startActivity(new Intent(getContext(), EditProfileActivity.class));
 
 
                 }else {
