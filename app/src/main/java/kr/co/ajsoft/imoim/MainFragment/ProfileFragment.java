@@ -109,6 +109,7 @@ public class ProfileFragment extends Fragment {
         myPhotos();
         mysaves();
 
+        //
         if(profileid.equals(firebaseUser.getUid())){
             editProfile.setText("프로필 수정");
 
