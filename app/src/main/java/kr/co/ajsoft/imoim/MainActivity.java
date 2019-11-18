@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.security.acl.Group;
 
+import kr.co.ajsoft.imoim.GroupFragment.ChatUserFragment;
 import kr.co.ajsoft.imoim.MainFragment.GroupFragment;
 import kr.co.ajsoft.imoim.MainFragment.HomeFragment;
 import kr.co.ajsoft.imoim.MainFragment.NotificationFragment;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationView;
     Fragment fragment=null;
 
+    ChatUserFragment chatUserFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
 
                             fragment=new GroupFragment();
                             item.setChecked(true);
+
+
 
 
                             break;

@@ -68,6 +68,10 @@ public class CommentsActivity extends AppCompatActivity {
         postid=intent.getStringExtra("postid");
         publisherid=intent.getStringExtra("publisherid");
 
+        addcomment=findViewById(R.id.add_comment);
+        imageProfile=findViewById(R.id.image_profile);
+        post=findViewById(R.id.post);
+
         recyclerView=findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
@@ -76,9 +80,7 @@ public class CommentsActivity extends AppCompatActivity {
         commentAdapter=new CommentAdapter(this,commentList);
         recyclerView.setAdapter(commentAdapter);
 
-        addcomment=findViewById(R.id.add_comment);
-        imageProfile=findViewById(R.id.image_profile);
-        post=findViewById(R.id.post);
+
 
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
@@ -103,7 +105,7 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void addComment(){
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Commnets").child(postid);
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Commets").child(postid);
 
         String commentid=reference.push().getKey();
 

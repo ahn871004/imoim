@@ -35,19 +35,19 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit Profile"
+                    android:text="프로필 수정"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:textStyle="bold"
                     android:textSize="18sp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="@color/textcolor_DarkGrey"
                     android:layout_toEndOf="@id/editprofile_close"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
-                    android:text="SAVE"
+                    android:text="저장"
                     android:id="@+id/editprofile_save"
                     android:textSize="16sp"
                     android:layout_centerVertical="true"
@@ -75,35 +75,41 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Change Photo"
+                android:text="사진 변경"
                 android:layout_gravity="center"
                 android:id="@+id/editprofile_tv_change"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/textcolor_DarkGrey"
                 android:textSize="16sp"/>
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:theme="@style/EditTextStyle"
+                app:met_textColorHint="@color/colorPrimary"
                 android:hint="Full Name"
                 android:id="@+id/editprofile_fullname"
-                android:theme="@style/EditTextStyle"
+                app:met_floatingLabel="normal"
                 />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:theme="@style/EditTextStyle"
+                app:met_textColorHint="@color/colorPrimary"
                 android:hint="Username"
                 android:id="@+id/editprofile_username"
-                android:theme="@style/EditTextStyle"
+                app:met_floatingLabel="normal"
                 />
 
-            <EditText
+            <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Bio"
                 android:id="@+id/editprofile_bio"
                 android:theme="@style/EditTextStyle"
+                app:met_textColorHint="@color/colorPrimary"
+                app:met_floatingLabel="normal"
                 />
 
         </LinearLayout>

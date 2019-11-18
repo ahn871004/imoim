@@ -67,6 +67,7 @@ public class PostActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadImage();
+
             }
         });
 

@@ -3,6 +3,7 @@ package kr.co.ajsoft.imoim.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
         final Post post=mPost.get(position);
 
+
         Glide.with(mContext).load(post.getPostimage()).into(viewHolder.postImage);
+
 
         if(post.getDescription().equals("")){
             viewHolder.description.setVisibility(View.GONE);
@@ -293,7 +296,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
                     imageView.setTag("saved");
 
                 }else {
-                    imageView.setImageResource(R.drawable.ic_savedpost);
                     imageView.setTag("save");
 
                 }

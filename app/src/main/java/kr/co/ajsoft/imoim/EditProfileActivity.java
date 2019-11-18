@@ -8,6 +8,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.EditText;
@@ -31,6 +32,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
+import com.rengwuxian.materialedittext.MaterialEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -38,14 +40,14 @@ import org.w3c.dom.Text;
 
 import java.util.HashMap;
 
+import kr.co.ajsoft.imoim.MainFragment.ProfileFragment;
 import kr.co.ajsoft.imoim.Model.User;
 
 public class EditProfileActivity extends AppCompatActivity {
 
     ImageView close,imageProfile;
     TextView save,tvChange;
-    EditText fullname,username,bio;
-
+    MaterialEditText fullname,username,bio;
     FirebaseUser firebaseUser;
 
     private Uri mImageUri;
@@ -99,7 +101,12 @@ public class EditProfileActivity extends AppCompatActivity {
                 updateProfile(fullname.getText().toString(),
                         username.getText().toString(),
                         bio.getText().toString());
+
+            startActivity(new Intent(EditProfileActivity.this,MainActivity.class));
             }
+
+
+
         });
 
         tvChange.setOnClickListener(new View.OnClickListener() {
@@ -134,7 +141,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
         reference.updateChildren(map);
 
-        Toast.makeText(EditProfileActivity.this, "Successfully updated!", Toast.LENGTH_SHORT).show();
+
+
+        Toast.makeText(EditProfileActivity.this, "프로필 수정완료", Toast.LENGTH_SHORT).show();
     }
 
     private String getFileExtension(Uri uri){
