@@ -8,10 +8,8 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,11 +34,8 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
 
-import kr.co.ajsoft.imoim.MainFragment.ProfileFragment;
 import kr.co.ajsoft.imoim.Model.User;
 
 public class EditProfileActivity extends AppCompatActivity {
@@ -50,9 +45,9 @@ public class EditProfileActivity extends AppCompatActivity {
     MaterialEditText fullname,username,bio;
     FirebaseUser firebaseUser;
 
-    private Uri mImageUri;
+    private Uri imageUri;
     private StorageTask uploadTask;
-    StorageReference storageRef;
+    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        storageRef = FirebaseStorage.getInstance().getReference("uploads");
+        storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
@@ -156,11 +151,11 @@ public class EditProfileActivity extends AppCompatActivity {
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setMessage("Uploading");
         pd.show();
-        if (mImageUri != null){
-            final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(mImageUri));
+        if (imageUri != null){
+            final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
+                    + "." + getFileExtension(imageUri));
 
-            uploadTask = fileReference.putFile(mImageUri);
+            uploadTask = fileReference.putFile(imageUri);
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -174,17 +169,17 @@ public class EditProfileActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
-                        String miUrlOk = downloadUri.toString();
+                        String myUrl = downloadUri.toString();
 
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-                        HashMap<String, Object> map1 = new HashMap<>();
-                        map1.put("imageurl", ""+miUrlOk);
-                        reference.updateChildren(map1);
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("imageurl", ""+myUrl);
+                        reference.updateChildren(hashMap);
 
                         pd.dismiss();
 
                     } else {
-                        Toast.makeText(EditProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(EditProfileActivity.this, "실패", Toast.LENGTH_SHORT).show();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -195,7 +190,7 @@ public class EditProfileActivity extends AppCompatActivity {
             });
 
         } else {
-            Toast.makeText(EditProfileActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditProfileActivity.this, "이미지가 선택되지 않았습니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -206,12 +201,14 @@ public class EditProfileActivity extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
 
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            mImageUri = result.getUri();
+            imageUri = result.getUri();
 
-            uploadImage();
+            imageProfile.setImageURI(imageUri);
+
+           // uploadImage();
 
         } else {
-            Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "오류 발생", Toast.LENGTH_SHORT).show();
         }
 
 

@@ -85,8 +85,6 @@ public class MainActivity extends AppCompatActivity {
                             item.setChecked(true);
 
 
-
-
                             break;
 
                         case R.id.navi_noti :
