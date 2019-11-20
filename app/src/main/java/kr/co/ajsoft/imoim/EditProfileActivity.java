@@ -118,8 +118,8 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
                         .setAspectRatio(1,1)
-                        .setCropShape(CropImageView.CropShape.OVAL)
                         .start(EditProfileActivity.this);
             }
         });
@@ -203,9 +203,10 @@ public class EditProfileActivity extends AppCompatActivity {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             imageUri = result.getUri();
 
+
             imageProfile.setImageURI(imageUri);
 
-           // uploadImage();
+            uploadImage();
 
         } else {
             Toast.makeText(this, "오류 발생", Toast.LENGTH_SHORT).show();
