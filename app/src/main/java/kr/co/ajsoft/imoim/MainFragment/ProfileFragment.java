@@ -36,6 +36,7 @@ import java.util.List;
 
 import kr.co.ajsoft.imoim.Adapter.MyPhotoAdapter;
 import kr.co.ajsoft.imoim.EditProfileActivity;
+import kr.co.ajsoft.imoim.MainActivity;
 import kr.co.ajsoft.imoim.Model.Post;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.R;
@@ -43,7 +44,7 @@ import kr.co.ajsoft.imoim.R;
 
 public class ProfileFragment extends Fragment {
 
-    ImageView imageProfile,options;
+    ImageView imageProfile,options,close;
     TextView posts,followers,following,fullname,bio,username;
     Button editProfile;
 
@@ -103,6 +104,7 @@ public class ProfileFragment extends Fragment {
         recyclerView.setVisibility(View.VISIBLE);
         recyclerView_saves.setVisibility(View.GONE);
 
+        close=view.findViewById(R.id.profile_close);
         userInfo();
         getFollowers();
         getNumPosts();
@@ -116,8 +118,19 @@ public class ProfileFragment extends Fragment {
         }else {
             checkFollow();
             savedPhotos.setVisibility(View.GONE);
+            close.setVisibility(View.VISIBLE);
 
         }
+
+
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
         editProfile.setOnClickListener(new View.OnClickListener() {

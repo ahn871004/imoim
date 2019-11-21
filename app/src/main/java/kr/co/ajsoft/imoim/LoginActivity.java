@@ -56,9 +56,9 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                final ProgressDialog pd= new ProgressDialog(LoginActivity.this);
-//                pd.setMessage("기다려주세요..");
-//                pd.show();
+                final ProgressDialog pd= new ProgressDialog(LoginActivity.this);
+                pd.setMessage("기다려주세요..");
+                pd.show();
 
                 String strEmail=email.getText().toString();
                 String strPassword=password.getText().toString();
@@ -88,13 +88,13 @@ public class LoginActivity extends AppCompatActivity {
 
                                             @Override
                                             public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                //pd.dismiss();
+                                                pd.dismiss();
 
                                             }
                                         });
 
                                     }else{
-                                        //pd.dismiss();
+                                        pd.dismiss();
                                         Toast.makeText(LoginActivity.this, "인증 실패하셨습니다.", Toast.LENGTH_SHORT).show();
 
                                     }

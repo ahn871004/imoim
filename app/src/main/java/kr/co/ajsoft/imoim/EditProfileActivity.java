@@ -149,7 +149,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void uploadImage(){
         final ProgressDialog pd = new ProgressDialog(this);
-        pd.setMessage("Uploading");
+        pd.setMessage("업로드중..");
         pd.show();
         if (imageUri != null){
             final StorageReference fileReference = storageReference.child(System.currentTimeMillis()

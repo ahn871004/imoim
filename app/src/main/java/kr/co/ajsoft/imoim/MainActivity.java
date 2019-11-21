@@ -3,6 +3,8 @@ package kr.co.ajsoft.imoim;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -21,6 +23,7 @@ import kr.co.ajsoft.imoim.GroupFragment.ChatUserFragment;
 import kr.co.ajsoft.imoim.MainFragment.GroupFragment;
 import kr.co.ajsoft.imoim.MainFragment.HomeFragment;
 import kr.co.ajsoft.imoim.MainFragment.NotificationFragment;
+import kr.co.ajsoft.imoim.MainFragment.PostDetailFragment;
 import kr.co.ajsoft.imoim.MainFragment.ProfileFragment;
 import kr.co.ajsoft.imoim.MainFragment.SearchFragment;
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     Fragment fragment=null;
 
     ChatUserFragment chatUserFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +58,6 @@ public class MainActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HomeFragment()).commit();
 
         }
-
-
-
-
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener=
@@ -106,11 +105,9 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-
-
-
-
                     return false;
                 }
             };
+
+
 }
