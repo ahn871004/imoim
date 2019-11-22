@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,22 +29,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.ajsoft.imoim.Adapter.UserAdapter;
+import kr.co.ajsoft.imoim.MainActivity;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.R;
 
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements MainActivity.OnBackPressedListener {
 
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
     private ArrayList<User> users;
+    HomeFragment homeFragment;
+
 
     EditText searchBar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_search, container, false);
+        View view= inflater.inflate(R.layout.fragment_search, container,                            false);
 
         recyclerView=view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -54,6 +58,8 @@ public class SearchFragment extends Fragment {
         users=new ArrayList<>();
         userAdapter=new UserAdapter(getContext(),users);
         recyclerView.setAdapter(userAdapter);
+
+        homeFragment=new HomeFragment();
 
         readUsers();
         searchBar.addTextChangedListener(new TextWatcher() {
@@ -123,4 +129,24 @@ public class SearchFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onBack() {
+        Log.e("Other","onBack");
+
+        MainActivity activity=(MainActivity)getActivity();
+
+        activity.setOnBackPressedListener(null);
+
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,homeFragment).commit();
+
+
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e("Other","onAttach()");
+        ((MainActivity)context).setOnBackPressedListener(this);
+    }
+
 }

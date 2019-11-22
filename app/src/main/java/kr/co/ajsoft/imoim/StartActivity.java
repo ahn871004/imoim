@@ -34,7 +34,7 @@ public class StartActivity extends AppCompatActivity{
 
     FirebaseUser firebaseUser;
 
-    IntroActivity introActivity;
+
 
 
     @Override
@@ -46,8 +46,8 @@ public class StartActivity extends AppCompatActivity{
 
         //firebase에 유저가 확인되면 바로 메인으로..
         if(firebaseUser!=null){
-            Intent intent1=new Intent(StartActivity.this,MainActivity.class);
-            startActivity(intent1);
+            Intent intent=new Intent(StartActivity.this,MainActivity.class);
+            startActivity(intent);
             finish();
 
         }

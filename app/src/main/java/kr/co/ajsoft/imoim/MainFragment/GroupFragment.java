@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,12 +22,14 @@ import kr.co.ajsoft.imoim.MainActivity;
 import kr.co.ajsoft.imoim.R;
 
 
-public class GroupFragment extends Fragment {
+public class GroupFragment extends Fragment implements MainActivity.OnBackPressedListener{
 
     private TabLayout tabLayout;
     private ViewPager pager;
     private TablayoutAdapter adapter;
     private Toolbar toolbar;
+
+    HomeFragment homeFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,9 +48,27 @@ public class GroupFragment extends Fragment {
 
         tabLayout.setupWithViewPager(pager);
 
+        homeFragment=new HomeFragment();
+
 
         return view;
 
+    }
+
+
+    @Override
+    public void onBack() {
+        Log.e("Other","onBack");
+        MainActivity activity=(MainActivity)getActivity();
+        activity.setOnBackPressedListener(null);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,homeFragment).commit();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e("Other","onAttach()");
+        ((MainActivity)context).setOnBackPressedListener(this);
     }
 
 }

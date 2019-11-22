@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ import kr.co.ajsoft.imoim.Model.Post;
 import kr.co.ajsoft.imoim.R;
 
 
-public class PostDetailFragment extends Fragment {
+public class PostDetailFragment extends Fragment implements MainActivity.OnBackPressedListener{
 
     String postid;
     private ImageView close;
@@ -39,11 +40,7 @@ public class PostDetailFragment extends Fragment {
     private PostAdapter postAdapter;
     private ArrayList<Post> postList;
 
-    public static PostDetailFragment newInstance(){
-
-        return new PostDetailFragment();
-    }
-
+    HomeFragment homeFragment;
 
     @Override
     public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
@@ -64,6 +61,8 @@ public class PostDetailFragment extends Fragment {
         postList=new ArrayList<>();
         postAdapter=new PostAdapter(getContext(),postList);
         recyclerView.setAdapter(postAdapter);
+
+        homeFragment=new HomeFragment();
 
         readPost();
 
@@ -112,5 +111,20 @@ public class PostDetailFragment extends Fragment {
 
     }
 
+
+    @Override
+    public void onBack() {
+        Log.e("Other","onBack");
+        MainActivity activity=(MainActivity)getActivity();
+        activity.setOnBackPressedListener(null);
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,homeFragment).commit();
+
+    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        Log.e("Other","onAttach()");
+        ((MainActivity)context).setOnBackPressedListener(this);
+    }
 
 }
