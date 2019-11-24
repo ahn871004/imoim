@@ -85,13 +85,13 @@ public class CommentsActivity extends AppCompatActivity {
         firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
 
 
-        
+
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(addcomment.getText().toString().equals("")){
                     Toast.makeText(CommentsActivity.this, "입력 해주세요.", Toast.LENGTH_SHORT).show();
-                    
+
                 }else{
                     addComment();
 

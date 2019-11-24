@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CommentsActivity">
+    tools:mContext=".CommentsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view"
+        android:layout_above="@+id/bottom"
         android:layout_below="@+id/toolbar"/>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
         android:id="@+id/bottom"
         android:background="#ffffff"
         android:padding="4dp"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="40dp"
@@ -54,5 +55,6 @@
         android:layout_marginEnd="10dp"
         android:textColor="@color/colorPrimary"
         />
+    </RelativeLayout>
 
 </RelativeLayout>
