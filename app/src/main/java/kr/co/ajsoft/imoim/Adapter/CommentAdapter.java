@@ -1,22 +1,17 @@
 package kr.co.ajsoft.imoim.Adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import kr.co.ajsoft.imoim.MainActivity;
 import kr.co.ajsoft.imoim.Model.Comment;
@@ -38,7 +32,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VH>{
     private Context mContext;
     private ArrayList<Comment> mComment;
 
-    private FirebaseUser firebaseUser;
+    FirebaseUser firebaseUser;
 
     public CommentAdapter(Context mContext, ArrayList<Comment> mComment) {
         this.mContext = mContext;
@@ -47,7 +41,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VH>{
 
     @NonNull
     @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommentAdapter.VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view= LayoutInflater.from(mContext).inflate(R.layout.commnet_item,parent,false);
 
@@ -56,12 +50,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VH>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH viewHolder, int position) {
+    public void onBindViewHolder(@NonNull final CommentAdapter.VH viewHolder, final int position) {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final Comment comment=mComment.get(position);
 
-        viewHolder.comment.setText(comment.getCommnet());
+        viewHolder.comment.setText(comment.getComment());
         getUserInfo(viewHolder.imageProfile,viewHolder.username,comment.getPublisher());
 
         viewHolder.comment.setOnClickListener(new View.OnClickListener() {

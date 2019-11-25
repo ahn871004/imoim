@@ -21,9 +21,9 @@
         <item name="android:textColor">@color/textcolor_DarkGrey</item>
         <item name="android:textColorHint">@color/textcolor_Grey</item>
 
-
-
     </style>
+
+    <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert"/>
 
 
 

@@ -105,32 +105,32 @@ public class CommentsActivity extends AppCompatActivity {
     }
 
     private void addComment(){
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Commets").child(postid);
+        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("Comments").child(postid);
 
-        String commentid=reference.push().getKey();
+        //String commentid=reference.push().getKey();
 
         HashMap<String,Object> hashMap=new HashMap<>();
         hashMap.put("comment",addcomment.getText().toString());
         hashMap.put("publisher",firebaseUser.getUid());
-        hashMap.put("commentid",commentid);
+        //hashMap.put("commentid",commentid);
 
         reference.push().setValue(hashMap);
-        addNotification();
+//        addNotification();
         addcomment.setText("");
 
     }
 
-    private void addNotification(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(publisherid);
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("userid", firebaseUser.getUid());
-        hashMap.put("text", "commented: "+addcomment.getText().toString());
-        hashMap.put("postid", postid);
-        hashMap.put("ispost", true);
-
-        reference.push().setValue(hashMap);
-    }
+//    private void addNotification(){
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(publisherid);
+//
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("userid", firebaseUser.getUid());
+//        hashMap.put("text", "commented: "+addcomment.getText().toString());
+//        hashMap.put("postid", postid);
+//        hashMap.put("ispost", true);
+//
+//        reference.push().setValue(hashMap);
+//    }
     private void getImage(){
         DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 

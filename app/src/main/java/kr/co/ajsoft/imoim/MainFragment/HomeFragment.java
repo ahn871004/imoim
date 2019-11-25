@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +42,8 @@ public class HomeFragment extends Fragment {
 
     FloatingActionButton floatingActionButton;
 
+    ProgressBar progressBar;
+
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -68,6 +71,8 @@ public class HomeFragment extends Fragment {
         postLists=new ArrayList<>();
         postAdapter=new PostAdapter(getContext(),postLists);
         recyclerView.setAdapter(postAdapter);
+
+        progressBar=view.findViewById(R.id.progress_circular);
 
         checkFollowing();
 
@@ -116,6 +121,7 @@ public class HomeFragment extends Fragment {
                     }
                 }
                 postAdapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override

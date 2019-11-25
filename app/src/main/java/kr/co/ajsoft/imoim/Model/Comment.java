@@ -2,25 +2,23 @@ package kr.co.ajsoft.imoim.Model;
 
 public class Comment {
 
-    private String commnet;
+    private String comment;
     private String publisher;
-    private String commentid;
 
-    public Comment(String commnet, String publisher, String commentid) {
-        this.commnet = commnet;
+    public Comment(String comment, String publisher) {
+        this.comment = comment;
         this.publisher = publisher;
-        this.commentid = commentid;
     }
 
     public Comment() {
     }
 
-    public String getCommnet() {
-        return commnet;
+    public String getComment() {
+        return comment;
     }
 
-    public void setCommnet(String commnet) {
-        this.commnet = commnet;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public String getPublisher() {
@@ -29,13 +27,5 @@ public class Comment {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
-    }
-
-    public String getCommentid() {
-        return commentid;
-    }
-
-    public void setCommentid(String commentid) {
-        this.commentid = commentid;
     }
 }

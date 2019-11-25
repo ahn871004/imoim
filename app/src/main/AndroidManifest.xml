@@ -19,8 +19,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StartActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".OptionActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".StartActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".EditProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
@@ -30,7 +32,7 @@
         <activity android:name=".ChatActivity" />
         <activity
             android:name=".CommentsActivity"
-            android:theme="@style/AppThemeNoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".PostActivity" />
         <activity
             android:name=".MainActivity"

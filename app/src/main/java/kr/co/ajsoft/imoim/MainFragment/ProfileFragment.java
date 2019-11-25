@@ -40,6 +40,7 @@ import kr.co.ajsoft.imoim.EditProfileActivity;
 import kr.co.ajsoft.imoim.MainActivity;
 import kr.co.ajsoft.imoim.Model.Post;
 import kr.co.ajsoft.imoim.Model.User;
+import kr.co.ajsoft.imoim.OptionActivity;
 import kr.co.ajsoft.imoim.R;
 
 
@@ -173,6 +174,14 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
 
                 }
 
+            }
+        });
+
+        options.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), OptionActivity.class);
+                startActivity(intent);
             }
         });
 
