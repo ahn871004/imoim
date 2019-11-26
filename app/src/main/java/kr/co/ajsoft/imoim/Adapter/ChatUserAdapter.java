@@ -1,6 +1,7 @@
 package kr.co.ajsoft.imoim.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import kr.co.ajsoft.imoim.MessageActivity;
 import kr.co.ajsoft.imoim.Model.ChatUser;
 import kr.co.ajsoft.imoim.R;
 
@@ -59,6 +61,14 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH> {
 
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, MessageActivity.class);
+                intent.putExtra("userid",chatUser.getId());
+                context.startActivity(intent);
+            }
+        });
 
     }
 

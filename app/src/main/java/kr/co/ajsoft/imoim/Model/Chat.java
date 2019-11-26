@@ -5,18 +5,40 @@ import java.util.Map;
 
 public class Chat {
 
-    //채팅방 유저들
-    public Map<String,Boolean> users=new HashMap<>();
+    private String sender;
+    private String receiver;
+    private String message;
 
-    //채팅방 대화내용
-    public Map<String,Comment> comments=new HashMap<>();
-    public static class Comment{
-
-        public String id;
-        public String message;
-
-
+    public Chat(String sender, String receiver, String message) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.message = message;
     }
 
+    public Chat() {
+    }
 
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

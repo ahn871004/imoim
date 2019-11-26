@@ -65,22 +65,22 @@
         android:background="@color/colorPrimary"
         >
         <EditText
-            android:id="@+id/et"
+            android:id="@+id/msg_et"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="msg_input messasge"
+            android:hint="메시지 입력.."
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:maxLines="3"
             android:background="@drawable/edittext_chat"
             />
-        <Button
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="send"
-            android:backgroundTint="@color/colorAccent"
-            android:layout_marginLeft="1dp"
+            android:background="@drawable/ic_send"
+            android:backgroundTint="#ffffff"
+            android:layout_margin="5dp"
             android:id="@+id/msg_btn_send"
             />
 
