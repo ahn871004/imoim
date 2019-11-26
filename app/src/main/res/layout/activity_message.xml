@@ -5,11 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp"
+    android:background="#ffffff"
     tools:mContext=".MessageActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/msg_appbar">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/msg_toolbar"
+            android:background="@color/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/MenuStyle">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/msg_profile_image"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/msg_username"
+                android:textSize="16sp"
+                android:layout_marginLeft="25dp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"/>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/message_recyclerview"
+        android:id="@+id/msg_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -18,7 +54,7 @@
 
 
     <LinearLayout
-        android:id="@+id/message_linearlayout"
+        android:id="@+id/msg_linearlayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -33,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="input messasge"
+            android:hint="msg_input messasge"
             android:inputType="textMultiLine"
             android:padding="10dp"
             android:maxLines="3"
@@ -45,7 +81,7 @@
             android:text="send"
             android:backgroundTint="@color/colorAccent"
             android:layout_marginLeft="1dp"
-            android:id="@+id/btn_send"
+            android:id="@+id/msg_btn_send"
             />
 
     </LinearLayout>

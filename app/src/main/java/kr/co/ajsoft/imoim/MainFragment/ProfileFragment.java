@@ -7,6 +7,9 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,12 +18,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,11 +44,13 @@ import java.util.List;
 
 import kr.co.ajsoft.imoim.Adapter.MyPhotoAdapter;
 import kr.co.ajsoft.imoim.EditProfileActivity;
+import kr.co.ajsoft.imoim.IntroActivity;
 import kr.co.ajsoft.imoim.MainActivity;
 import kr.co.ajsoft.imoim.Model.Post;
 import kr.co.ajsoft.imoim.Model.User;
 import kr.co.ajsoft.imoim.OptionActivity;
 import kr.co.ajsoft.imoim.R;
+import kr.co.ajsoft.imoim.StartActivity;
 
 
 public class ProfileFragment extends Fragment implements MainActivity.OnBackPressedListener {
@@ -67,11 +76,21 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
 
     ImageButton myPhotos, savedPhotos;
 
+    Context context;
+
+
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        Toolbar toolbar=view.findViewById(R.id.toolbar);
+
+        MainActivity activity=(MainActivity)getActivity();
+        activity.setSupportActionBar(toolbar);
+
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -79,13 +98,13 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
         profileid = prefs.getString("profileid", "none");
 
         imageProfile = view.findViewById(R.id.image_profile);
-        options = view.findViewById(R.id.options);
+//        options = view.findViewById(R.id.options);
         posts = view.findViewById(R.id.posts);
         followers = view.findViewById(R.id.followers);
         following = view.findViewById(R.id.following);
         fullname = view.findViewById(R.id.fullname);
         bio = view.findViewById(R.id.bio);
-        username = view.findViewById(R.id.username);
+        username = view.findViewById(R.id.profile_username);
         editProfile = view.findViewById(R.id.edit_profile);
         myPhotos = view.findViewById(R.id.my_photos);
         savedPhotos = view.findViewById(R.id.saved_photos);
@@ -112,6 +131,8 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
         close = view.findViewById(R.id.profile_close);
 
         homeFragment = new HomeFragment();
+
+        setHasOptionsMenu(true);
 
         userInfo();
         getFollowers();
@@ -177,13 +198,7 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
             }
         });
 
-        options.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(getActivity(), OptionActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         myPhotos.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -203,6 +218,38 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
         });
 
         return view;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.profilefg_option,menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+            case R.id.menu_setting:
+
+                return true;
+
+            case R.id.menu_logout:
+
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getContext(), IntroActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+
+                return true;
+
+                default:
+                    return false;
+
+        }
+
+
     }
 
     private void userInfo() {
@@ -270,9 +317,9 @@ public class ProfileFragment extends Fragment implements MainActivity.OnBackPres
             }
         });
 
-        DatabaseReference referencel = FirebaseDatabase.getInstance().getReference().child("Follow")
+        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Follow")
                 .child(profileid).child("following");
-        referencel.addValueEventListener(new ValueEventListener() {
+        reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 following.setText("" + dataSnapshot.getChildrenCount());

@@ -15,12 +15,13 @@ public class TablayoutAdapter extends FragmentPagerAdapter {
     String[] pageTitles=new String[]{"ChatRoom","Users"};
 
 
-
     public TablayoutAdapter(@NonNull FragmentManager fm) {
         super(fm);
 
         fragments[0]=new ChatGroupFragment();
         fragments[1]=new ChatUserFragment();
+
+
     }
     @NonNull
     @Override
@@ -42,5 +43,10 @@ public class TablayoutAdapter extends FragmentPagerAdapter {
         return pageTitles[position];
     }
 
-
 }
+
+
+
+
+
+

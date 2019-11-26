@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationView navigationView;
     Fragment fragment=null;
 
+
     private long pressedTime=0;
 
     @Override
@@ -86,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
                             fragment=new GroupFragment();
                             item.setChecked(true);
-
 
                             break;
 

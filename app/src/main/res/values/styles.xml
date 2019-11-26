@@ -25,7 +25,16 @@
 
     <style name="AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert"/>
 
+    <style name="MenuStyle" parent="Theme.AppCompat.Light">
+        <item name="android:background">@android:color/white</item>
+    </style>
 
+    <!--앱바에 적용될 스타일 테마-->
+    <style name="AppTheme.Appbar">
+    <item name="titleTextColor">#ffffff</item>
+    <!--액션바의 메뉴아이템 색상-->
+    <item name="colorControlNormal">#ffffff</item>
 
-
+    <item name="subtitleTextColor">#ffffff</item>
+    </style>
 </resources>
