@@ -63,6 +63,7 @@ public class EditProfileActivity extends AppCompatActivity {
         bio=findViewById(R.id.editprofile_bio);
 
 
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         storageReference = FirebaseStorage.getInstance().getReference("uploads");
 
@@ -74,7 +75,13 @@ public class EditProfileActivity extends AppCompatActivity {
                 fullname.setText(user.getFullname());
                 username.setText(user.getUsername());
                 bio.setText(user.getBio());
-                Glide.with(getApplicationContext()).load(user.getImageurl()).into(imageProfile);
+                if(user.getImageurl().equals("default")){
+                    imageProfile.setImageResource(R.mipmap.ic_launcher);
+
+                }else{
+                    Glide.with(getApplicationContext()).load(user.getImageurl()).into(imageProfile);
+                }
+
             }
 
             @Override
@@ -107,22 +114,29 @@ public class EditProfileActivity extends AppCompatActivity {
         tvChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CropImage.activity()
-                        .setAspectRatio(1,1)
-                        .setCropShape(CropImageView.CropShape.OVAL)
-                        .start(EditProfileActivity.this);
+                openImage();
             }
         });
 
         imageProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.ON)
-                        .setAspectRatio(1,1)
-                        .start(EditProfileActivity.this);
+
+                openImage();
+//                CropImage.activity()
+//                        .setGuidelines(CropImageView.Guidelines.ON)
+//                        .setAspectRatio(1,1)
+//                        .start(EditProfileActivity.this);
             }
         });
+    }
+
+    private void openImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent,1);
+
     }
 
     private void updateProfile(String fullname, String username, String bio){
@@ -198,15 +212,22 @@ public class EditProfileActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == 1 && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            imageUri = data.getData();
 
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            imageUri = result.getUri();
-
-
-            imageProfile.setImageURI(imageUri);
-
-            uploadImage();
+            if (uploadTask != null && uploadTask.isInProgress()){
+                Toast.makeText(this, "Upload in preogress", Toast.LENGTH_SHORT).show();
+            } else {
+                uploadImage();
+            }
+//            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+//            imageUri = result.getUri();
+//
+//
+//            imageProfile.setImageURI(imageUri);
+//
+//            uploadImage();
 
         } else {
             Toast.makeText(this, "오류 발생", Toast.LENGTH_SHORT).show();

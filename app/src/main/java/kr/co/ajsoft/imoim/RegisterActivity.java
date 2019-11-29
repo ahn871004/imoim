@@ -101,8 +101,8 @@ public class RegisterActivity extends AppCompatActivity {
                             hashMap.put("id",userid);
                             hashMap.put("username", userName.toLowerCase());
                             hashMap.put("fullname",fullname);
-                            hashMap.put("bio","");
-                            hashMap.put("imageurl","gs://imoim-fdd76.appspot.com/seoul.png");
+                            hashMap.put("bio","welcome to imoim");
+                            hashMap.put("imageurl","gs://imoim-fdd76.appspot.com/206371_user-png.png");
 
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

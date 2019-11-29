@@ -64,7 +64,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
 
 
         if(post.getDescription().equals("")){
-            viewHolder.description.setVisibility(View.GONE);
+            viewHolder.description.setVisibility(View.VISIBLE);
 
         }else{
             viewHolder.description.setVisibility(View.VISIBLE);
@@ -250,9 +250,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
 
     }
 
-    private void numLikes(final TextView likes, String postid){
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Likes")
-                .child(postid);
+        private void numLikes(final TextView likes, String postid){
+            DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Likes")
+                    .child(postid);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

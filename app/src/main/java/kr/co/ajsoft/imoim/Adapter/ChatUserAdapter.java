@@ -5,28 +5,26 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import kr.co.ajsoft.imoim.MessageActivity;
 import kr.co.ajsoft.imoim.Model.ChatUser;
 import kr.co.ajsoft.imoim.R;
 
-public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH> {
+public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<ChatUser> users;
+
+
 
 
 
@@ -37,15 +35,15 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH> {
 
     @NonNull
     @Override
-    public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.chatuser_item,parent,false);
 
 
-        return new ChatUserAdapter.VH(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull VH holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
 
         final ChatUser chatUser=users.get(position);
@@ -77,12 +75,12 @@ public class ChatUserAdapter extends RecyclerView.Adapter<ChatUserAdapter.VH> {
         return users.size();
     }
 
-    public class VH extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView username;
         public CircleImageView profile_image;
 
-        public VH(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             username=itemView.findViewById(R.id.chatuser_username);

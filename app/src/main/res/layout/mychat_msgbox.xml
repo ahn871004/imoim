@@ -39,16 +39,16 @@
         android:text="Hello Android"
         android:textColor="#FFFFFF" />
 
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="13:35"
-        android:textSize="10sp"
-        android:layout_toLeftOf="@+id/tv_msg"
-        android:layout_marginRight="5dp"
-        android:layout_alignBottom="@id/tv_msg"
-        />
+<!--    <TextView-->
+<!--        android:id="@+id/tv_time"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="13:35"-->
+<!--        android:textSize="10sp"-->
+<!--        android:layout_toLeftOf="@+id/tv_msg"-->
+<!--        android:layout_marginRight="5dp"-->
+<!--        android:layout_alignBottom="@id/tv_msg"-->
+<!--        />-->
 
 
 </RelativeLayout>

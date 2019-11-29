@@ -88,6 +88,7 @@ public class ChatUserFragment extends Fragment {
 
                     }
 
+
                 chatUserAdapter= new ChatUserAdapter(getContext(),users);
                 recyclerView.setAdapter(chatUserAdapter);
 
