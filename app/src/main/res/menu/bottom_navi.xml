@@ -16,17 +16,17 @@
         app:showAsAction="ifRoom"
         />
     <item
-        android:id="@+id/navi_group"
-        android:icon="@drawable/ic_action_group"
+        android:id="@+id/navi_add"
+        android:icon="@drawable/ic_add"
         android:title=""
         app:showAsAction="ifRoom"
         />
-    <item
-        android:id="@+id/navi_noti"
-        android:icon="@drawable/ic_action_noti"
-        android:title=""
-        app:showAsAction="ifRoom"
-        />
+<!--    <item-->
+<!--        android:id="@+id/navi_noti"-->
+<!--        android:icon="@drawable/ic_action_noti"-->
+<!--        android:title=""-->
+<!--        app:showAsAction="ifRoom"-->
+<!--        />-->
 
     <item
         android:id="@+id/navi_person"

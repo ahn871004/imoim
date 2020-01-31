@@ -75,7 +75,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
         publisherInfo(viewHolder.imagProfile,viewHolder.userName,viewHolder.publisher,post.getPublisher());
         isLiked(post.getPostid(),viewHolder.like);
         numLikes(viewHolder.likes,post.getPostid());
-        getComments(post.getPostid(),viewHolder.comments);
+//        getComments(post.getPostid(),viewHolder.comments);
         isSaved(post.getPostid(),viewHolder.save);
 
         viewHolder.imagProfile.setOnClickListener(new View.OnClickListener() {
@@ -154,25 +154,25 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
             }
         });
 
-        viewHolder.comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context, CommentsActivity.class);
-                intent.putExtra("postid",post.getPostid());
-                intent.putExtra("publisherid",post.getPublisher());
-                context.startActivity(intent);
-            }
-        });
+//        viewHolder.comment.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(context, CommentsActivity.class);
+//                intent.putExtra("postid",post.getPostid());
+//                intent.putExtra("publisherid",post.getPublisher());
+//                context.startActivity(intent);
+//            }
+//        });
 
-        viewHolder.comments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(context, CommentsActivity.class);
-                intent.putExtra("postid",post.getPostid());
-                intent.putExtra("publisherid",post.getPublisher());
-                context.startActivity(intent);
-            }
-        });
+//        viewHolder.comments.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(context, CommentsActivity.class);
+//                intent.putExtra("postid",post.getPostid());
+//                intent.putExtra("publisherid",post.getPublisher());
+//                context.startActivity(intent);
+//            }
+//        });
 
     }
 
@@ -192,36 +192,36 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.VH>{
             imagProfile=itemView.findViewById(R.id.image_profile);
             postImage=itemView.findViewById(R.id.post_image);
             like=itemView.findViewById(R.id.like);
-            comment=itemView.findViewById(R.id.comment);
+//            comment=itemView.findViewById(R.id.comment);
             save=itemView.findViewById(R.id.save);
 
             userName=itemView.findViewById(R.id.username);
             likes=itemView.findViewById(R.id.likes);
             publisher=itemView.findViewById(R.id.publisher);
             description=itemView.findViewById(R.id.description);
-            comments=itemView.findViewById(R.id.comments);
+//            comments=itemView.findViewById(R.id.comments);
 
 
 
         }
     }
 
-    private void getComments(String postid, final TextView comments){
-        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Comments").child(postid);
-
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                comments.setText("View All "+dataSnapshot.getChildrenCount()+" Comments");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
+//    private void getComments(String postid, final TextView comments){
+//        DatabaseReference reference=FirebaseDatabase.getInstance().getReference().child("Comments").child(postid);
+//
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                comments.setText("View All "+dataSnapshot.getChildrenCount()+" Comments");
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
+//
+//    }
 
     private void isLiked(String postid, final ImageView imageView){
 

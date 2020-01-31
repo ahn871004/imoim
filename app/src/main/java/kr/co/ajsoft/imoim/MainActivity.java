@@ -83,17 +83,17 @@ public class MainActivity extends AppCompatActivity {
                             item.setChecked(true);
                             break;
 
-                        case R.id.navi_group :
+                        case R.id.navi_add :
 
-                            fragment=new GroupFragment();
+                            startActivity(new Intent(MainActivity.this,PostActivity.class));
                             item.setChecked(true);
 
                             break;
 
-                        case R.id.navi_noti :
-                            fragment=new NotificationFragment();
-                            item.setChecked(true);
-                            break;
+//                        case R.id.navi_noti :
+//                            fragment=new NotificationFragment();
+//                            item.setChecked(true);
+//                            break;
 
                         case R.id.navi_person :
                             item.setChecked(true);

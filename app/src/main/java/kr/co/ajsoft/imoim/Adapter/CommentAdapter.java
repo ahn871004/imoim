@@ -93,7 +93,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.VH>{
 
             imageProfile=itemView.findViewById(R.id.image_profile);
             username=itemView.findViewById(R.id.username);
-            comment=itemView.findViewById(R.id.comment);
+//            comment=itemView.findViewById(R.id.comment);
 
 
         }
